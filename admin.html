@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Official Dashboard - PCMC Grievance Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white border-b border-slate-200 px-6 py-4 flex flex-wrap justify-between items-center gap-4">
+        <h1 class="text-xl font-bold text-blue-900">PCMC Official Portal</h1>
+        
+        <div class="flex flex-wrap items-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium text-slate-600">
+            <a href="admin.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">Dashboard</a>
+            <a href="grievances.html" class="hover:text-blue-600 transition-colors">Grievances</a>
+            <a href="reports.html" class="hover:text-blue-600 transition-colors">Reports</a>
+            <a href="departments.html" class="hover:text-blue-600 transition-colors">Departments</a>
+        </div>
+        
+        <button id="switchDeptBtn" class="text-sm font-semibold text-slate-600 border border-slate-300 px-4 py-2 rounded hover:bg-slate-50 transition-colors">
+            Switch Dept
+        </button>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 mt-4">
+        
+        <!-- Header & Metrics -->
+        <div class="flex flex-wrap justify-between items-end gap-4 mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-800">Grievance Dashboard</h2>
+                <p class="text-slate-500 text-sm mt-1">Overview of current civic complaints and operational metrics.</p>
+            </div>
+            <button id="exportReportBtn" class="text-sm font-semibold bg-white border border-slate-300 px-4 py-2 rounded shadow-sm flex items-center gap-2 hover:bg-slate-50 transition-colors">
+                Export Report
+            </button>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wide mb-2">Total Pending</h3>
+                <p class="text-4xl font-bold text-slate-800">4,281</p>
+                <p class="text-xs text-slate-500 mt-2">↗ +12% since last week</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wide mb-2">Resolved Today</h3>
+                <p class="text-4xl font-bold text-green-600">342</p>
+                <p class="text-xs text-slate-500 mt-2">↗ Above daily average</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wide mb-2">Escalated / Critical</h3>
+                <p class="text-4xl font-bold text-red-600">89</p>
+                <p class="text-xs text-red-500 mt-2 font-medium">! Immediate action required</p>
+            </div>
+            <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100">
+                <h3 class="text-slate-500 text-xs font-bold uppercase tracking-wide mb-2">Average TAT</h3>
+                <p class="text-4xl font-bold text-blue-900">48<span class="text-xl">hrs</span></p>
+                <p class="text-xs text-slate-500 mt-2">↘ Down 2 hrs from last month</p>
+            </div>
+        </section>
+
+        <!-- Complaint Queue Table -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-5 border-b border-slate-200 flex flex-wrap justify-between items-center gap-4">
+                <h3 class="text-lg font-bold text-slate-800">Complaint Queue</h3>
+                <div class="flex flex-wrap gap-3 w-full md:w-auto">
+                    <!-- Added ID to Search -->
+                    <input type="text" id="searchInput" placeholder="Search ID or Keyword..." class="text-sm border border-slate-300 rounded px-3 py-2 w-full md:w-64 focus:ring-2 focus:ring-blue-500 outline-none">
+                    
+                    <select class="text-sm border border-slate-300 rounded px-3 py-2 bg-white flex-1 md:flex-none">
+                        <option>All Departments</option>
+                    </select>
+                    
+                    <!-- Added ID and options to Urgency Dropdown -->
+                    <select id="urgencyFilter" class="text-sm border border-slate-300 rounded px-3 py-2 bg-white flex-1 md:flex-none">
+                        <option value="All">All Urgency</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm">
+                    <thead class="bg-slate-50 text-slate-500 text-xs uppercase font-bold border-b border-slate-200">
+                        <tr>
+                            <th class="px-6 py-4">ID</th>
+                            <th class="px-6 py-4">Date</th>
+                            <th class="px-6 py-4">Language</th>
+                            <th class="px-6 py-4">Category</th>
+                            <th class="px-6 py-4">Urgency</th>
+                            <th class="px-6 py-4">Status</th>
+                            <th class="px-6 py-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100" id="tableBody">
+                        <!-- JS injects rows here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

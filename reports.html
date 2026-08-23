@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics - PCMC Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white px-8 py-4 flex justify-between items-center shadow-sm flex-wrap gap-4">
+        <h1 class="text-xl font-bold text-blue-900 tracking-tight">PCMC Official Portal</h1>
+        
+        <div class="flex flex-wrap items-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium text-slate-600">
+            <a href="admin.html" class="hover:text-blue-600 transition-colors">Dashboard</a>
+            <a href="grievances.html" class="hover:text-blue-600 transition-colors">Grievances</a>
+            <a href="reports.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">Reports</a>
+            <a href="departments.html" class="hover:text-blue-600 transition-colors">Departments</a>
+        </div>
+        
+        <button id="switchDeptBtn" class="bg-white text-slate-600 border border-slate-300 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-slate-50 whitespace-nowrap">
+            Switch Dept
+        </button>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 mt-4">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">Performance Analytics</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <!-- Mock Chart Area 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 h-80 flex flex-col justify-between">
+                <h3 class="font-bold text-slate-700">Resolution Time Trend (Last 30 Days)</h3>
+                <div class="flex-grow flex items-center justify-center border-2 border-dashed border-slate-100 mt-4 rounded bg-slate-50">
+                    <p class="text-slate-400 text-sm font-semibold">[ Chart Visualization Placeholder ]</p>
+                </div>
+            </div>
+            
+            <!-- Mock Chart Area 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 h-80 flex flex-col justify-between">
+                <h3 class="font-bold text-slate-700">Grievances by Category</h3>
+                <div class="flex-grow flex items-center justify-center border-2 border-dashed border-slate-100 mt-4 rounded bg-slate-50">
+                    <p class="text-slate-400 text-sm font-semibold">[ Pie Chart Placeholder ]</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export Section -->
+        <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex flex-wrap justify-between items-center gap-4">
+            <div>
+                <h3 class="font-bold text-slate-800">Generate Official Report</h3>
+                <p class="text-sm text-slate-500">Download formatted data for auditing and municipal presentations.</p>
+            </div>
+            <div class="flex gap-3 w-full md:w-auto">
+                <button id="exportPdfBtn" class="flex-1 md:flex-none border border-slate-300 text-slate-700 px-4 py-2 rounded text-sm font-bold hover:bg-slate-50 transition-colors">Export PDF</button>
+                <button id="exportCsvBtn" class="flex-1 md:flex-none bg-blue-900 text-white px-4 py-2 rounded text-sm font-bold hover:bg-blue-800 transition-colors">Export CSV</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

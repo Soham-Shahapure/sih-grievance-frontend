@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Grievances - PCMC Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white px-8 py-4 flex justify-between items-center shadow-sm flex-wrap gap-4">
+        <h1 class="text-xl font-bold text-blue-900 tracking-tight">PCMC Official Portal</h1>
+        
+        <div class="flex flex-wrap items-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium text-slate-600">
+            <a href="admin.html" class="hover:text-blue-600 transition-colors">Dashboard</a>
+            <a href="grievances.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">Grievances</a>
+            <a href="reports.html" class="hover:text-blue-600 transition-colors">Reports</a>
+            <a href="departments.html" class="hover:text-blue-600 transition-colors">Departments</a>
+        </div>
+        
+        <button id="switchDeptBtn" class="bg-white text-slate-600 border border-slate-300 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-slate-50 whitespace-nowrap">
+            Switch Dept
+        </button>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 mt-4">
+        <div class="flex flex-wrap justify-between items-center gap-4 mb-6">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-800">Master Grievance List</h2>
+                <p class="text-slate-500 text-sm mt-1">View, filter, and manage all incoming citizen complaints.</p>
+            </div>
+            <button id="manualEntryBtn" class="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded shadow-sm transition-colors">
+                + Manual Entry
+            </button>
+        </div>
+
+        <!-- Advanced Filters & Table -->
+        <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <input type="text" id="grievanceSearch" placeholder="Search ID or Keyword..." class="w-full text-sm border border-slate-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 outline-none">
+                
+                <select id="grievanceStatusFilter" class="w-full text-sm border border-slate-300 rounded-lg px-4 py-2 bg-white">
+                    <option value="All">All Statuses</option>
+                    <option value="Pending">Pending</option>
+                    <option value="In-Progress">In-Progress</option>
+                    <option value="Resolved">Resolved</option>
+                    <option value="New">New</option>
+                </select>
+                
+                <select class="w-full text-sm border border-slate-300 rounded-lg px-4 py-2 bg-white text-slate-500 cursor-not-allowed" disabled>
+                    <option>All Dates (Last 30 Days)</option>
+                </select>
+                
+                <button id="applyGrievanceFilters" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg px-4 py-2 text-sm transition-colors">
+                    Apply Filters
+                </button>
+            </div>
+
+            <div class="border border-slate-200 rounded-lg overflow-hidden overflow-x-auto">
+                <table class="w-full text-left text-sm min-w-[600px]">
+                    <thead class="bg-slate-50 text-slate-500 text-xs uppercase font-bold border-b border-slate-200">
+                        <tr>
+                            <th class="px-6 py-4">ID</th>
+                            <th class="px-6 py-4">Category</th>
+                            <th class="px-6 py-4">Urgency</th>
+                            <th class="px-6 py-4">Status</th>
+                            <th class="px-6 py-4">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="grievancesTableBody" class="divide-y divide-slate-100">
+                        <!-- JS injects rows here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    
+    <script src="js/admin.js"></script>
+</body>
+</html>

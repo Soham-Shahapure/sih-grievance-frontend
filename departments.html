@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments - PCMC Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans min-h-screen">
+
+    <!-- Top Navigation -->
+    <nav class="bg-white px-8 py-4 flex justify-between items-center shadow-sm flex-wrap gap-4">
+        <h1 class="text-xl font-bold text-blue-900 tracking-tight">PCMC Official Portal</h1>
+        
+        <div class="flex flex-wrap items-center gap-3 sm:gap-6 text-xs sm:text-sm font-medium text-slate-600">
+            <a href="admin.html" class="hover:text-blue-600 transition-colors">Dashboard</a>
+            <a href="grievances.html" class="hover:text-blue-600 transition-colors">Grievances</a>
+            <a href="reports.html" class="hover:text-blue-600 transition-colors">Reports</a>
+            <a href="departments.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">Departments</a>
+        </div>
+        
+        <button id="switchDeptBtn" class="bg-white text-slate-600 border border-slate-300 text-sm font-semibold px-4 py-2 rounded-lg hover:bg-slate-50 whitespace-nowrap">
+            Switch Dept
+        </button>
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 mt-4">
+        <h2 class="text-2xl font-bold text-slate-800 mb-6">Municipal Departments Directory</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Department Card 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-blue-300 transition-colors group">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-lg font-bold text-slate-800">Water Supply</h3>
+                    <span class="bg-red-50 text-red-700 px-2 py-1 rounded text-xs font-bold border border-red-100">High Load</span>
+                </div>
+                <p class="text-sm text-slate-500 mb-4">Handles pipeline leaks, contamination, and supply shortages.</p>
+                <div class="flex justify-between items-center text-sm pt-4 border-t border-slate-100">
+                    <span class="font-semibold text-slate-700">Open Tickets: 142</span>
+                    <button class="view-load-btn text-blue-600 font-bold group-hover:underline focus:outline-none" data-dept="Water Supply">
+                        View Load →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Department Card 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-blue-300 transition-colors group">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-lg font-bold text-slate-800">Public Works & Roads</h3>
+                    <span class="bg-yellow-50 text-yellow-700 px-2 py-1 rounded text-xs font-bold border border-yellow-100">Medium Load</span>
+                </div>
+                <p class="text-sm text-slate-500 mb-4">Handles potholes, unauthorized construction, and road safety.</p>
+                <div class="flex justify-between items-center text-sm pt-4 border-t border-slate-100">
+                    <span class="font-semibold text-slate-700">Open Tickets: 85</span>
+                    <button class="view-load-btn text-blue-600 font-bold group-hover:underline focus:outline-none" data-dept="Public Works & Roads">
+                        View Load →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Department Card 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:border-blue-300 transition-colors group">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-lg font-bold text-slate-800">Electrical Dept</h3>
+                    <span class="bg-green-50 text-green-700 px-2 py-1 rounded text-xs font-bold border border-green-100">Optimal</span>
+                </div>
+                <p class="text-sm text-slate-500 mb-4">Handles streetlight outages and municipal power faults.</p>
+                <div class="flex justify-between items-center text-sm pt-4 border-t border-slate-100">
+                    <span class="font-semibold text-slate-700">Open Tickets: 12</span>
+                    <button class="view-load-btn text-blue-600 font-bold group-hover:underline focus:outline-none" data-dept="Electrical Dept">
+                        View Load →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>
