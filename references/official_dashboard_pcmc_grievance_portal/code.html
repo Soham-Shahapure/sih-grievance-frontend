@@ -1,0 +1,444 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>PCMC Grievance Portal Dashboard</title>
+<!-- Tailwind CSS with custom configuration -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "on-primary-container": "#9bbdff",
+                    "secondary-fixed": "#9ef6b6",
+                    "on-secondary-fixed-variant": "#00522a",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#001b3f",
+                    "primary-container": "#004a99",
+                    "secondary-fixed-dim": "#83d99c",
+                    "on-secondary-fixed": "#00210e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#424751",
+                    "on-tertiary-fixed-variant": "#6d3a00",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#ffa95b",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-fixed-variant": "#00458f",
+                    "primary-fixed-dim": "#abc7ff",
+                    "secondary-container": "#9ef6b6",
+                    "surface-container-high": "#e7e8e9",
+                    "primary-fixed": "#d7e2ff",
+                    "tertiary-fixed-dim": "#ffb77a",
+                    "surface-container-low": "#f3f4f5",
+                    "outline": "#737783",
+                    "surface-container": "#edeeef",
+                    "tertiary": "#532b00",
+                    "surface-variant": "#e1e3e4",
+                    "surface-bright": "#f8f9fa",
+                    "on-error": "#ffffff",
+                    "secondary": "#0b6d3b",
+                    "on-secondary-container": "#177341",
+                    "background": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "primary": "#00346f",
+                    "on-tertiary-fixed": "#2e1500",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#191c1d",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#ffdcc2",
+                    "outline-variant": "#c2c6d3",
+                    "surface-tint": "#255dad",
+                    "inverse-primary": "#abc7ff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-surface": "#191c1d",
+                    "tertiary-container": "#743e00",
+                    "inverse-surface": "#2e3132"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "32px",
+                    "unit": "8px",
+                    "container-max": "1280px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter", "sans-serif"],
+                    "headline-lg": ["Inter", "sans-serif"],
+                    "label-sm": ["Inter", "sans-serif"],
+                    "headline-md": ["Inter", "sans-serif"],
+                    "body-md": ["Inter", "sans-serif"],
+                    "label-md": ["Inter", "sans-serif"],
+                    "display-lg": ["Inter", "sans-serif"],
+                    "headline-lg-mobile": ["Inter", "sans-serif"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Tonal Layering Utilities */
+        .surface-level-0 { @apply bg-surface; }
+        .surface-level-1 { @apply bg-surface-container-lowest border border-outline-variant; }
+        .surface-level-2 { @apply bg-surface-container-lowest border border-outline-variant transition-all duration-200 hover:shadow-[0px_4px_12px_rgba(0,0,0,0.05)]; }
+        .surface-level-3 { @apply bg-surface-container-lowest shadow-lg rounded-xl border border-outline-variant; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md text-body-md">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant w-full top-0 sticky z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto h-16">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-primary cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="font-headline-md text-headline-md text-primary font-bold">PCMC Official Portal</div>
+</div>
+<!-- Desktop Navigation -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 cursor-pointer active:scale-95 transition-transform hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-on-surface-variant cursor-pointer active:scale-95 transition-transform hover:text-primary transition-colors" href="#">Grievances</a>
+<a class="text-on-surface-variant cursor-pointer active:scale-95 transition-transform hover:text-primary transition-colors" href="#">Reports</a>
+<a class="text-on-surface-variant cursor-pointer active:scale-95 transition-transform hover:text-primary transition-colors" href="#">Departments</a>
+</nav>
+<!-- Actions -->
+<div class="flex items-center gap-4">
+<div class="hidden md:flex relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-2 border border-outline-variant rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-48 text-label-md" placeholder="Search..." type="text">
+</div>
+<button class="hidden md:block text-primary border border-primary px-4 py-2 rounded font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors cursor-pointer active:scale-95">Switch Dept</button>
+<button class="text-outline hover:text-error transition-colors cursor-pointer active:scale-95 hidden sm:block">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden flex-shrink-0">
+<img alt="Officer Profile Avatar" class="w-full h-full object-cover" data-alt="A small circular avatar placeholder image showing a generic profile silhouette in shades of gray against a light gray background, indicating an active officer profile in a light-mode corporate government dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDehmW6gjLuq_v0P-tQUcLexZg5qWf97gKZmxJow_dWM3DzyNLRVvNxR_W5yyti3tiOzBmM_2eBU11tyFFYXiruYA2fZdvLST9dmNBEHXBlrRbkVuLYTcC9-nMvVRrIEUGe7ynCLIaqKw3C_euJlPw_psvB1DWQ8r_PEPTOwvKy9K3q5C8RQJhpo9DCRNNn3vcRay_Dzie-gOJ0nZVz5xzwpHTj5A7G_G1_Mn22X3oaAx5-jspPrPTA">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow w-full px-margin-mobile md:px-margin-desktop py-8 max-w-container-max mx-auto flex flex-col gap-8">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+<div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-1">Grievance Dashboard</h1>
+<p class="text-on-surface-variant text-body-md">Overview of current civic complaints and operational metrics.</p>
+</div>
+<div class="flex gap-2">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded font-label-md text-label-md text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+                    Export Report
+                </button>
+</div>
+</div>
+<!-- Metric Cards Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Total Pending -->
+<div class="surface-level-2 rounded-lg p-6 flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-tertiary-container/10 rounded-bl-full -mr-4 -mt-4"></div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Total Pending</span>
+<div class="w-10 h-10 rounded bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="pending_actions" data-weight="fill" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-tertiary">4,281</span>
+</div>
+<div class="flex items-center gap-1 text-label-sm text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span class="">+12% since last week</span>
+</div>
+</div>
+<!-- Resolved Today -->
+<div class="surface-level-2 rounded-lg p-6 flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-secondary-container/10 rounded-bl-full -mr-4 -mt-4"></div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Resolved Today</span>
+<div class="w-10 h-10 rounded bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="task_alt" data-weight="fill" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-secondary">342</span>
+</div>
+<div class="flex items-center gap-1 text-label-sm text-secondary">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span class="">Above daily average</span>
+</div>
+</div>
+<!-- Escalated Critical -->
+<div class="surface-level-2 rounded-lg p-6 flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-error-container/10 rounded-bl-full -mr-4 -mt-4"></div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Escalated / Critical</span>
+<div class="w-10 h-10 rounded bg-error-container flex items-center justify-center text-on-error-container">
+<span class="material-symbols-outlined" data-icon="warning" data-weight="fill" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-error">89</span>
+</div>
+<div class="flex items-center gap-1 text-label-sm text-error">
+<span class="material-symbols-outlined text-[16px]" data-icon="priority_high">priority_high</span>
+<span class="">Immediate action required</span>
+</div>
+</div>
+<!-- Avg TAT -->
+<div class="surface-level-2 rounded-lg p-6 flex flex-col gap-4 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-16 h-16 bg-primary-container/10 rounded-bl-full -mr-4 -mt-4"></div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Average TAT</span>
+<div class="w-10 h-10 rounded bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined" data-icon="timer" data-weight="fill" style="font-variation-settings: 'FILL' 1;">timer</span>
+</div>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">48<span class="text-headline-md font-headline-md">hrs</span></span>
+</div>
+<div class="flex items-center gap-1 text-label-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_drop_down">arrow_drop_down</span>
+<span class="">Down 2 hrs from last month</span>
+</div>
+</div>
+</section>
+<!-- Main Data Table Section -->
+<section class="surface-level-1 rounded-lg flex flex-col overflow-hidden">
+<!-- Table Controls -->
+<div class="p-4 border-b border-outline-variant bg-surface-container-lowest flex flex-col lg:flex-row gap-4 justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-surface">Complaint Queue</h2>
+<div class="flex flex-wrap items-center gap-3 w-full lg:w-auto">
+<!-- Search -->
+<div class="relative flex-grow lg:flex-grow-0">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full lg:w-64 pl-10 pr-4 py-2 border border-outline-variant rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-label-md h-10" placeholder="Search ID or Keyword..." type="text">
+</div>
+<!-- Filters -->
+<select class="border border-outline-variant rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-label-md h-10 px-3 cursor-pointer">
+<option>All Departments</option>
+<option>Roads &amp; Traffic</option>
+<option>Water Supply</option>
+<option>Sanitation</option>
+</select>
+<select class="border border-outline-variant rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-label-md h-10 px-3 cursor-pointer">
+<option>All Urgency</option>
+<option>High</option>
+<option>Medium</option>
+<option>Low</option>
+</select>
+<select class="border border-outline-variant rounded bg-surface-container-lowest text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-label-md h-10 px-3 cursor-pointer">
+<option>All Wards</option>
+<option>Ward A</option>
+<option>Ward B</option>
+<option>Ward C</option>
+</select>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<tr>
+<th class="p-4 font-semibold w-24">ID</th>
+<th class="p-4 font-semibold w-32">Date</th>
+<th class="p-4 font-semibold hidden md:table-cell w-28">Language</th>
+<th class="p-4 font-semibold min-w-[150px]">Category&nbsp;</th>
+<th class="p-4 font-semibold w-24">Urgency</th>
+<th class="p-4 font-semibold w-32">Status</th>
+<th class="p-4 font-semibold text-right w-32">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant text-body-md text-on-surface bg-surface-container-lowest">
+<!-- Row 1: High Urgency -->
+<tr class="hover:bg-surface transition-colors">
+<td class="p-4 font-label-md font-medium text-primary cursor-pointer hover:underline">PCMC-8921</td>
+<td class="p-4 text-on-surface-variant text-label-md">Oct 24, 09:15</td>
+<td class="p-4 hidden md:table-cell text-on-surface-variant">Marathi</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="water_drop">water_drop</span>
+<span class="">Severe Water Logging</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded bg-error-container text-on-error-container font-label-sm text-label-sm flex items-center gap-1 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="keyboard_double_arrow_up">keyboard_double_arrow_up</span>
+                                    High
+                                </span>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full border border-tertiary text-tertiary font-label-sm text-label-sm bg-tertiary-fixed/30">
+                                    Pending
+                                </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors" title="Assign">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_add">person_add</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Medium Urgency -->
+<tr class="hover:bg-surface transition-colors">
+<td class="p-4 font-label-md font-medium text-primary cursor-pointer hover:underline">PCMC-8920</td>
+<td class="p-4 text-on-surface-variant text-label-md">Oct 24, 08:30</td>
+<td class="p-4 hidden md:table-cell text-on-surface-variant">Hindi</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="add_road">add_road</span>
+<span class="">Pothole Repair</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm flex items-center gap-1 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="horizontal_rule">horizontal_rule</span>
+                                    Medium
+                                </span>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full border border-primary text-primary font-label-sm text-label-sm bg-primary-fixed/30">
+                                    In-Progress
+                                </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+<button class="w-8 h-8 rounded hover:bg-secondary-container flex items-center justify-center text-secondary transition-colors" title="Mark Resolved">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Low Urgency -->
+<tr class="hover:bg-surface transition-colors">
+<td class="p-4 font-label-md font-medium text-primary cursor-pointer hover:underline">PCMC-8915</td>
+<td class="p-4 text-on-surface-variant text-label-md">Oct 23, 16:45</td>
+<td class="p-4 hidden md:table-cell text-on-surface-variant">English</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="delete">delete</span>
+<span class="">Missed Garbage Collection</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded bg-surface-variant text-on-surface-variant font-label-sm text-label-sm flex items-center gap-1 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+                                    Low
+                                </span>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full border border-outline text-on-surface-variant font-label-sm text-label-sm bg-surface-container-low">
+                                    New
+                                </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+<button class="w-8 h-8 rounded hover:bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors" title="Assign">
+<span class="material-symbols-outlined text-[20px]" data-icon="person_add">person_add</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Resolved -->
+<tr class="hover:bg-surface transition-colors">
+<td class="p-4 font-label-md font-medium text-primary cursor-pointer hover:underline">PCMC-8890</td>
+<td class="p-4 text-on-surface-variant text-label-md">Oct 22, 10:00</td>
+<td class="p-4 hidden md:table-cell text-on-surface-variant">Marathi</td>
+<td class="p-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-[18px]" data-icon="lightbulb">lightbulb</span>
+<span class="">Streetlight Malfunction</span>
+</div>
+</td>
+<td class="p-4">
+<span class="px-2 py-1 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm flex items-center gap-1 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="horizontal_rule">horizontal_rule</span>
+                                    Medium
+                                </span>
+</td>
+<td class="p-4">
+<span class="px-3 py-1 rounded-full border border-secondary text-secondary font-label-sm text-label-sm bg-secondary-fixed/30 flex items-center gap-1 w-fit">
+<span class="material-symbols-outlined text-[14px]" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span>
+                                    Resolved
+                                </span>
+</td>
+<td class="p-4 text-right">
+<div class="flex items-center justify-end gap-2">
+<button class="text-primary font-label-md text-label-md hover:underline" title="View Details">
+                                        Details
+                                    </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="p-4 border-t border-outline-variant bg-surface-container-lowest flex justify-between items-center text-label-md text-on-surface-variant">
+<div class="">Showing 1 to 10 of 4,281 entries</div>
+<div class="flex gap-2">
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container disabled:opacity-50" disabled="">Prev</button>
+<button class="px-3 py-1 bg-primary text-on-primary rounded">1</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container">2</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container">3</button>
+<button class="px-3 py-1 border border-outline-variant rounded hover:bg-surface-container">Next</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container text-on-surface border-t border-outline-variant w-full mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-unit max-w-container-max mx-auto h-16">
+<div class="font-headline-md text-headline-md font-bold text-primary mb-2 md:mb-0">PCMC Official Portal</div>
+<div class="text-label-md text-on-surface-variant mb-2 md:mb-0">
+                © 2024 Pimpri-Chinchwad Municipal Corporation. All rights reserved.
+            </div>
+<div class="flex gap-4 font-label-md text-label-md text-on-surface-variant">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Help Desk</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+
+
+</body></html>

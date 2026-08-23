@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Track Your Grievance - PCMC</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#c2c6d3",
+                      "secondary-fixed": "#9ef6b6",
+                      "on-primary-fixed": "#001b3f",
+                      "surface-dim": "#d9dadb",
+                      "on-tertiary-fixed": "#2e1500",
+                      "on-primary-fixed-variant": "#00458f",
+                      "on-secondary-container": "#177341",
+                      "on-secondary": "#ffffff",
+                      "surface-container-high": "#e7e8e9",
+                      "inverse-surface": "#2e3132",
+                      "surface-variant": "#e1e3e4",
+                      "surface-bright": "#f8f9fa",
+                      "tertiary-fixed": "#ffdcc2",
+                      "on-tertiary-fixed-variant": "#6d3a00",
+                      "primary": "#00346f",
+                      "on-surface-variant": "#424751",
+                      "primary-fixed-dim": "#abc7ff",
+                      "background": "#f8f9fa",
+                      "on-tertiary-container": "#ffa95b",
+                      "surface": "#f8f9fa",
+                      "secondary": "#0b6d3b",
+                      "on-error": "#ffffff",
+                      "inverse-on-surface": "#f0f1f2",
+                      "on-error-container": "#93000a",
+                      "outline": "#737783",
+                      "on-tertiary": "#ffffff",
+                      "primary-container": "#004a99",
+                      "on-background": "#191c1d",
+                      "inverse-primary": "#abc7ff",
+                      "on-primary-container": "#9bbdff",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#d7e2ff",
+                      "error-container": "#ffdad6",
+                      "error": "#ba1a1a",
+                      "tertiary-container": "#743e00",
+                      "tertiary-fixed-dim": "#ffb77a",
+                      "secondary-container": "#9ef6b6",
+                      "on-secondary-fixed": "#00210e",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed-variant": "#00522a",
+                      "secondary-fixed-dim": "#83d99c",
+                      "surface-container": "#edeeef",
+                      "tertiary": "#532b00",
+                      "surface-container-low": "#f3f4f5",
+                      "surface-container-highest": "#e1e3e4",
+                      "surface-tint": "#255dad",
+                      "on-surface": "#191c1d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-desktop": "32px",
+                      "margin-mobile": "16px",
+                      "unit": "8px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "56px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "40px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+          .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+          }
+      </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased">
+<!-- TopNavBar -->
+<nav class="bg-surface dark:bg-inverse-surface fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline flat no shadows">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-gutter">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary flex items-center gap-2" href="#">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="hidden sm:inline">PCMC Grievance Portal</span>
+<span class="sm:hidden">PCMC</span>
+</a>
+</div>
+<div class="hidden md:flex items-center gap-gutter h-full">
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all flex items-center h-full pt-1" href="#">Home</a>
+<a class="font-label-md text-label-md text-primary dark:text-inverse-primary border-b-2 border-primary pb-1 hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all flex items-center h-full pt-1" href="#">Track</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-inverse-primary transition-colors active:opacity-80 transition-all flex items-center h-full pt-1" href="#">Public Stats</a>
+</div>
+<div class="flex items-center gap-unit">
+<button class="font-label-md text-label-md text-primary dark:text-inverse-primary border border-outline-variant hover:bg-surface-variant rounded-full px-4 py-2 transition-colors active:opacity-80 transition-all hidden sm:flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">language</span>
+                    Language
+                </button>
+<button class="font-label-md text-label-md bg-primary text-on-primary hover:opacity-90 rounded-full px-4 py-2 transition-colors active:opacity-80 transition-all">
+                    Officer Login
+                </button>
+<!-- Mobile menu button -->
+<button class="md:hidden text-primary p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[80px] md:pt-[96px] pb-16 px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto flex flex-col gap-8 md:gap-12">
+<!-- Search Section -->
+<section class="w-full max-w-3xl mx-auto text-center flex flex-col gap-6 pt-8 md:pt-16">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Track Your Grievance</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
+                Enter your Complaint ID below to check the real-time status of your report.
+            </p>
+<div class="w-full mt-4 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_4px_12px_rgba(0,0,0,0.05)] p-2 flex flex-col sm:flex-row gap-2 transition-all focus-within:border-primary focus-within:shadow-[0px_8px_24px_rgba(0,52,111,0.1)]">
+<div class="flex-grow flex items-center pl-4 gap-3 bg-surface-container-lowest rounded-lg">
+<span class="material-symbols-outlined text-outline">search</span>
+<input aria-label="Enter Complaint ID" class="w-full bg-transparent border-none focus:ring-0 font-body-md text-body-md text-on-surface placeholder:text-outline py-3 outline-none" id="complaint-id-input" placeholder="e.g., PCMC-8921" type="text"/>
+</div>
+<button class="bg-primary text-on-primary font-label-md text-label-md rounded-lg px-8 py-3 sm:py-0 hover:bg-primary-container transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2 whitespace-nowrap" id="track-btn">
+                    Track
+                </button>
+</div>
+<!-- Quick links for demo purposes -->
+<div class="flex justify-center gap-4 text-sm mt-2">
+<span class="text-on-surface-variant font-label-sm text-label-sm">Try examples:</span>
+<button class="text-primary hover:underline font-label-sm text-label-sm" onclick="document.getElementById('complaint-id-input').value='PCMC-8921'; document.getElementById('status-result-section').classList.remove('hidden');">PCMC-8921</button>
+</div>
+</section>
+<!-- Status Result Section (Initially hidden, shown via JS for demo) -->
+<section class="w-full max-w-4xl mx-auto flex flex-col gap-8 hidden animate-[fadeIn_0.3s_ease-out]" id="status-result-section">
+<!-- Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 md:p-8 flex flex-col md:flex-row gap-6 justify-between items-start md:items-center relative overflow-hidden group hover:shadow-[0px_4px_12px_rgba(0,0,0,0.05)] transition-shadow">
+<div class="absolute top-0 left-0 w-1 h-full bg-[#ffa95b]"></div> <!-- Saffron indicator for Action Required/In-Progress -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<h2 class="font-headline-md text-headline-md text-on-surface">PCMC-8921</h2>
+<span class="bg-[#ffa95b]/20 text-[#743e00] font-label-sm text-label-sm px-3 py-1 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+                            In-Progress
+                        </span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-2 mt-2">
+<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-[18px] text-outline">calendar_today</span>
+                            Submitted: Oct 24, 2024
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md">
+<span class="material-symbols-outlined text-[18px] text-outline">category</span>
+                            Category: Roads &amp; Infrastructure
+                        </div>
+<div class="flex items-center gap-2 text-on-surface-variant font-body-md text-body-md sm:col-span-2 mt-1">
+<span class="material-symbols-outlined text-[18px] text-outline">location_on</span>
+                            Location: Ward 14, Main Street
+                        </div>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-end gap-2 text-right">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Expected Resolution</span>
+<span class="font-headline-md text-headline-md text-primary">Oct 28</span>
+</div>
+</div>
+<!-- Timeline Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 md:p-8 flex flex-col gap-6">
+<h3 class="font-headline-md text-headline-md text-on-surface border-b border-surface-variant pb-4">Tracking History</h3>
+<div class="relative pl-6 md:pl-8 py-2">
+<!-- Vertical Line -->
+<div class="absolute left-[11px] md:left-[15px] top-4 bottom-4 w-0.5 bg-surface-variant"></div>
+<div class="absolute left-[11px] md:left-[15px] top-4 h-[60%] w-0.5 bg-[#ffa95b] shadow-[0_0_8px_rgba(255,169,91,0.5)]"></div>
+<div class="flex flex-col gap-8">
+<!-- Step 1: Submitted -->
+<div class="relative">
+<div class="absolute -left-6 md:-left-8 w-6 h-6 rounded-full bg-[#0b6d3b] border-4 border-surface-container-lowest flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>
+</div>
+<div class="flex flex-col gap-1 pl-4">
+<div class="flex justify-between items-baseline flex-wrap gap-2">
+<h4 class="font-label-md text-label-md text-[#0b6d3b] font-bold">Submitted</h4>
+<span class="font-label-sm text-label-sm text-outline">Oct 24, 09:15 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Your grievance has been successfully registered.</p>
+</div>
+</div>
+<!-- Step 2: Assigned -->
+<div class="relative">
+<div class="absolute -left-6 md:-left-8 w-6 h-6 rounded-full bg-[#0b6d3b] border-4 border-surface-container-lowest flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>
+</div>
+<div class="flex flex-col gap-1 pl-4">
+<div class="flex justify-between items-baseline flex-wrap gap-2">
+<h4 class="font-label-md text-label-md text-[#0b6d3b] font-bold">Assigned</h4>
+<span class="font-label-sm text-label-sm text-outline">Oct 24, 02:30 PM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Assigned to Ward Officer, Sanitation Dept.</p>
+</div>
+</div>
+<!-- Step 3: In-Progress (Current) -->
+<div class="relative">
+<div class="absolute -left-[26px] md:-left-[34px] w-7 h-7 rounded-full bg-[#ffa95b] border-4 border-surface-container-lowest flex items-center justify-center z-10 shadow-sm animate-pulse">
+<div class="w-2.5 h-2.5 bg-white rounded-full"></div>
+</div>
+<div class="flex flex-col gap-2 pl-4">
+<div class="flex justify-between items-baseline flex-wrap gap-2">
+<h4 class="font-label-md text-label-md text-[#743e00] font-bold">In-Progress</h4>
+<span class="font-label-sm text-label-sm text-outline">Oct 25, 10:00 AM</span>
+</div>
+<div class="bg-surface-container p-4 rounded-lg border-l-2 border-[#ffa95b]">
+<p class="font-body-md text-body-md text-on-surface">Officer visited site - cleanup scheduled for tomorrow.</p>
+</div>
+</div>
+</div>
+<!-- Step 4: Resolved -->
+<div class="relative">
+<div class="absolute -left-6 md:-left-8 w-6 h-6 rounded-full bg-surface-variant border-4 border-surface-container-lowest flex items-center justify-center z-10"></div>
+<div class="flex flex-col gap-1 pl-4 opacity-50">
+<div class="flex justify-between items-baseline flex-wrap gap-2">
+<h4 class="font-label-md text-label-md text-on-surface-variant font-bold">Resolved</h4>
+<span class="font-label-sm text-label-sm text-outline">Pending</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Awaiting resolution confirmation.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Feedback / Accountability -->
+<div class="bg-primary/5 rounded-xl border border-primary/20 p-6 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+<div class="flex flex-col gap-2">
+<h4 class="font-headline-md text-headline-md text-primary flex items-center gap-2 justify-center md:justify-start">
+<span class="material-symbols-outlined text-[24px]">forum</span>
+                        Are you satisfied with the progress?
+                    </h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Your feedback helps us improve municipal services.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+<button class="bg-surface-container-lowest border border-outline-variant text-on-surface hover:bg-surface-variant font-label-md text-label-md py-2.5 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">thumb_up</span>
+                        Yes
+                    </button>
+<button class="bg-surface-container-lowest border border-[#ba1a1a] text-[#ba1a1a] hover:bg-[#ffdad6] font-label-md text-label-md py-2.5 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">report</span>
+                        No - Escalate
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container dark:bg-inverse-surface text-primary dark:text-inverse-primary w-full py-8 mt-auto grid grid-cols-1 md:grid-cols-3 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto border-t border-surface-variant">
+<div class="flex flex-col gap-4">
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">PCMC</span>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant text-sm">
+                Empowering citizens through transparent and efficient digital governance.
+            </p>
+</div>
+<div class="flex flex-col gap-4 md:col-span-2">
+<ul class="flex flex-wrap gap-x-8 gap-y-4 font-body-md text-body-md">
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:underline text-primary dark:hover:text-inverse-primary transition-all duration-200" href="#">Contact Us</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:underline text-primary dark:hover:text-inverse-primary transition-all duration-200" href="#">Municipal Services</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:underline text-primary dark:hover:text-inverse-primary transition-all duration-200" href="#">Accessibility Statement</a></li>
+<li><a class="text-on-surface-variant dark:text-surface-variant hover:underline text-primary dark:hover:text-inverse-primary transition-all duration-200" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div class="md:col-span-3 pt-6 mt-6 border-t border-surface-variant flex flex-col sm:flex-row justify-between items-center gap-4">
+<span class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant text-sm text-center sm:text-left">
+                © 2024 Pimpri-Chinchwad Municipal Corporation. All rights reserved.
+            </span>
+<div class="flex gap-4">
+<!-- Social placeholders -->
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">share</span></div>
+</div>
+</div>
+</footer>
+<style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<script>
+        // Simple demo logic to show results
+        document.getElementById('track-btn').addEventListener('click', function() {
+            const input = document.getElementById('complaint-id-input').value;
+            if(input.trim() !== '') {
+                document.getElementById('status-result-section').classList.remove('hidden');
+                // Scroll to result smoothly
+                setTimeout(() => {
+                    document.getElementById('status-result-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            } else {
+                // Focus input if empty
+                document.getElementById('complaint-id-input').focus();
+            }
+        });
+
+        // Allow Enter key to submit
+        document.getElementById('complaint-id-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                document.getElementById('track-btn').click();
+            }
+        });
+    </script>
+</body></html>
