@@ -1,5 +1,3 @@
-// js/signup.js
-
 document.addEventListener("DOMContentLoaded", () => {
     const signupForm = document.getElementById("signupForm");
     
@@ -24,11 +22,13 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.classList.add("opacity-75", "cursor-not-allowed");
         errorBox.classList.add("hidden");
 
-        // 🔴 PLACEHOLDER: Ensure these keys match the exact schema your backend team created in MongoDB
+        const mobileNumber = document.getElementById("signupMobile").value;
+
+        // 🔴 PLACEHOLDER: Ensure these keys match the backend MongoDB schema
         const payload = {
             fullName: document.getElementById("signupName").value,
             email: document.getElementById("signupEmail").value,
-            mobile: document.getElementById("signupMobile").value,
+            mobile: mobileNumber,
             address: {
                 flat: document.getElementById("signupFlat").value,
                 street: document.getElementById("signupStreet").value,
@@ -41,17 +41,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // Send to backend via api.js
-            const response = await registerUser(payload);
+            await registerUser(payload);
+            
+            // MVP HACK: Save the mobile number to localStorage to mark them as logged in
+            localStorage.setItem('citizen_id', mobileNumber);
             
             alert("✅ Account created successfully!\n\nYour address details have been saved to your profile for faster grievance filing.");
-            window.location.href = "login.html";
+            window.location.href = "index.html"; // Send them straight to the portal!
 
         } catch (error) {
-            // Show error to user (e.g. "Mobile number already exists")
             errorBox.innerText = error.message;
             errorBox.classList.remove("hidden");
             
-            // Reset button
             submitBtn.innerHTML = `Sign Up`;
             submitBtn.disabled = false;
             submitBtn.classList.remove("opacity-75", "cursor-not-allowed");
