@@ -1,0 +1,352 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Ticket Detail - PCMC Digital Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-primary-fixed": "#001b3c",
+                      "on-secondary-fixed": "#001b3d",
+                      "on-error-container": "#93000a",
+                      "outline-variant": "#c3c6d1",
+                      "on-tertiary-fixed-variant": "#004b74",
+                      "tertiary": "#002035",
+                      "primary": "#001e40",
+                      "surface-bright": "#f6fafe",
+                      "success-emerald": "#059669",
+                      "on-secondary-fixed-variant": "#00468c",
+                      "on-error": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-highest": "#dfe3e7",
+                      "primary-fixed-dim": "#a7c8ff",
+                      "on-secondary": "#ffffff",
+                      "royal-blue": "#004A99",
+                      "primary-container": "#003366",
+                      "on-secondary-container": "#00376f",
+                      "surface-variant": "#dfe3e7",
+                      "on-surface": "#171c1f",
+                      "on-surface-variant": "#43474f",
+                      "surface-container-high": "#e4e9ed",
+                      "on-primary": "#ffffff",
+                      "on-primary-container": "#799dd6",
+                      "inverse-primary": "#a7c8ff",
+                      "error-ruby": "#DC2626",
+                      "tertiary-fixed": "#cde5ff",
+                      "on-tertiary-fixed": "#001d32",
+                      "imperial-blue": "#003366",
+                      "secondary": "#005db6",
+                      "background": "#f6fafe",
+                      "tertiary-fixed-dim": "#94ccff",
+                      "warning-amber": "#D97706",
+                      "tertiary-container": "#003656",
+                      "surface": "#f6fafe",
+                      "primary-fixed": "#d5e3ff",
+                      "secondary-fixed": "#d6e3ff",
+                      "surface-tint": "#3a5f94",
+                      "secondary-fixed-dim": "#a9c7ff",
+                      "secondary-container": "#63a1ff",
+                      "surface-container": "#eaeef2",
+                      "inverse-on-surface": "#edf1f5",
+                      "outline": "#737780",
+                      "on-background": "#171c1f",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#4ea2e2",
+                      "on-primary-fixed-variant": "#1f477b",
+                      "surface-container-lowest": "#ffffff",
+                      "error": "#ba1a1a",
+                      "inverse-surface": "#2c3134",
+                      "surface-dim": "#d6dade",
+                      "sky-tint": "#E3F2FD",
+                      "surface-container-low": "#f0f4f8"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "margin-desktop": "48px",
+                      "container-max": "1440px",
+                      "base": "8px",
+                      "stack-md": "24px",
+                      "stack-lg": "40px",
+                      "stack-sm": "12px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "0.03em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "display-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.03em",
+                                      "fontWeight": "800"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f6fafe; /* background */
+        }
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+        .glass-header {
+            background: rgba(246, 250, 254, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 glass-header border-b border-white/20 shadow-[0px_4px_20px_rgba(0,51,102,0.08)]">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto h-20">
+<!-- Brand -->
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-imperial-blue" data-icon="account_balance" style="font-variation-settings: &quot;FILL&quot; 1; font-size: 32px;">account_balance</span>
+<span class="font-headline-md text-headline-md font-extrabold text-imperial-blue tracking-tight">PCMC Digital Portal</span>
+</div>
+<!-- Navigation Links (Hidden on Mobile) -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-royal-blue transition-colors" href="#">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-royal-blue transition-colors" href="#">Departments</a>
+<a class="font-label-md text-label-md text-royal-blue font-bold border-b-2 border-royal-blue pb-1" href="#">Grievances</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-royal-blue transition-colors" href="#">Public Data</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-royal-blue transition-colors" href="#">Transparency</a>
+</nav>
+<!-- Trailing Action -->
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-2 px-4 py-2 bg-primary-container text-on-primary-container rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-all shadow-md">
+                    Officer Dashboard
+                </button>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border border-outline-variant cursor-pointer hover:shadow-md transition-all">
+<img alt="Officer Profile Portrait" class="w-full h-full object-cover" data-alt="Professional portrait of a government official, smart formal wear, bright modern office lighting, corporate style avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRA3XVFC2-PPFw9OLutV6uE25B-SuQilQQqGn8PS71Mk9i6j6Tce3GmRaoe2CsGTGhlrrtBJbyDEKTB6jVoa0TUA3KO7kT02V5-DhczZ-_KQluoiZLKjnyXgdFdOWkFzBWQ02ZyXTednFbBehyYEINP0EL8iCdY5f9nw4NFSdMUITKBgXdKzvlrc0gQb8Hd2jjDHoC8ntb9wLVXjkYAEA3i-YIf8mnU6TDGpsovc-IykD8pGvXB0aS">
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow pt-28 pb-12 px-margin-mobile md:px-margin-desktop w-full max-w-container-max mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-md text-label-md text-outline">Ticket ID:</span>
+<span class="font-headline-md text-headline-md text-primary font-bold">PCMC-8921</span>
+<div class="px-3 py-1 bg-warning-amber/10 text-warning-amber rounded-full font-label-sm text-label-sm flex items-center gap-1 border border-warning-amber/20">
+<span class="material-symbols-outlined text-[14px]" data-icon="schedule">schedule</span> Pending Review
+                    </div>
+<div class="px-3 py-1 bg-error-ruby/10 text-error-ruby rounded-full font-label-sm text-label-sm flex items-center gap-1 border border-error-ruby/20">
+                         High Priority
+                    </div>
+</div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-imperial-blue">Unauthorized Construction on Public Road</h1>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface text-royal-blue border border-royal-blue rounded-lg font-label-md text-label-md hover:bg-sky-tint transition-all shadow-[0px_4px_20px_rgba(0,51,102,0.08)] flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="print">print</span> Print
+                </button>
+<button class="px-4 py-2 bg-gradient-to-r from-imperial-blue to-royal-blue text-white rounded-lg font-label-md text-label-md hover:shadow-[0px_12px_32px_rgba(0,51,102,0.12)] transition-all shadow-[0px_4px_20px_rgba(0,51,102,0.08)] -translate-y-[1px] hover:-translate-y-[2px] flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="edit_document">edit_document</span> Update Status
+                </button>
+</div>
+</div>
+<!-- 2-Column Layout Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Left Column: Main Information (Span 2) -->
+<div class="lg:col-span-2 flex flex-col gap-stack-md">
+<!-- Core Details Card -->
+<div class="glass-card rounded-xl p-6 border border-outline-variant/30 shadow-[0px_4px_20px_rgba(0,51,102,0.08)] hover:shadow-[0px_12px_32px_rgba(0,51,102,0.12)] transition-shadow duration-300">
+<h2 class="font-headline-md text-headline-md text-imperial-blue mb-4 flex items-center gap-2 border-b border-surface-container pb-3">
+<span class="material-symbols-outlined" data-icon="info">info</span> Ticket Details
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">Reported By</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Anil Deshmukh</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">+91 98765 43210</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">Date &amp; Time</p>
+<p class="font-body-md text-body-md text-on-surface">Oct 24, 2023 - 14:30 IST</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">Category</p>
+<p class="font-body-md text-body-md text-on-surface">Urban Planning / Encroachment</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-1">Assigned Department</p>
+<p class="font-body-md text-body-md text-on-surface font-semibold text-royal-blue">Anti-Encroachment Cell (Zone A)</p>
+</div>
+</div>
+<div class="mt-6 pt-4 border-t border-surface-container">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-2">Description</p>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            A permanent concrete structure is being built extending onto the main road in Sector 14. This is causing severe traffic bottlenecks during peak hours and poses a safety risk. Workers are active on site primarily during early mornings.
+                        </p>
+</div>
+</div>
+<!-- Multimedia Evidence Gallery -->
+
+<!-- Location & AI Analysis -->
+
+</div>
+<!-- Right Column: Actions & Notes (Span 1) -->
+<div class="lg:col-span-1 flex flex-col gap-stack-md">
+<!-- Official Actions -->
+<div class="glass-card rounded-xl p-6 border border-outline-variant/30 shadow-[0px_4px_20px_rgba(0,51,102,0.08)]">
+<h2 class="font-headline-md text-headline-md text-imperial-blue mb-4 border-b border-surface-container pb-2">Actions</h2>
+<div class="space-y-3">
+<button class="w-full py-3 px-4 bg-primary text-on-primary rounded-lg font-label-md text-label-md hover:bg-opacity-90 transition-all shadow-md flex justify-between items-center group">
+                            Dispatch Inspection Team
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full py-3 px-4 bg-surface text-on-surface border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-variant transition-all flex justify-between items-center">
+                            Issue Notice to Owner
+                             <span class="material-symbols-outlined" data-icon="mail">mail</span>
+</button>
+<button class="w-full py-3 px-4 bg-surface text-on-surface border border-outline-variant rounded-lg font-label-md text-label-md hover:bg-surface-variant transition-all flex justify-between items-center">
+                            Escalate to Zonal Head
+                             <span class="material-symbols-outlined" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</div>
+<div class="mt-6 pt-4 border-t border-surface-container">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-wider mb-2">Assignee</p>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-white flex items-center justify-center font-bold text-sm">
+                                RJ
+                            </div>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Rahul Jadhav</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Field Inspector</p>
+</div>
+<button class="ml-auto text-royal-blue text-sm hover:underline">Change</button>
+</div>
+</div>
+</div>
+<!-- Internal Notes Thread -->
+
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-primary dark:bg-surface-container-lowest border-t border-outline-variant dark:border-outline">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md px-margin-mobile md:px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div>
+<p class="font-headline-md text-headline-md text-white dark:text-primary mb-2">PCMC Digital Portal</p>
+<p class="font-body-md text-body-md text-on-primary dark:text-on-surface">© 2024 Pimpri-Chinchwad Municipal Corporation. All Rights Reserved.</p>
+</div>
+<div class="flex flex-wrap md:justify-end gap-4 items-center">
+<a class="font-label-sm text-label-sm text-primary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors cursor-pointer hover:opacity-80 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors cursor-pointer hover:opacity-80 transition-opacity" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors cursor-pointer hover:opacity-80 transition-opacity" href="#">Accessibility</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors cursor-pointer hover:opacity-80 transition-opacity" href="#">Contact Support</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors cursor-pointer hover:opacity-80 transition-opacity" href="#">Digital India</a>
+<a class="font-label-sm text-label-sm text-primary-fixed-dim dark:text-on-surface-variant hover:text-white transition-colors cursor-pointer hover:opacity-80 transition-opacity" href="#">Open Data Policy</a>
+</div>
+</div>
+</footer>
+
+
+</body></html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PCMC Grievance Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f6fafe",
+                        "surface-dim": "#d6dade",
+                        "surface-bright": "#f6fafe",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f0f4f8",
+                        "surface-container": "#eaeff4",
+                        "surface-container-high": "#e4e9ee",
+                        "surface-container-highest": "#dee3e8",
+                        "on-surface": "#181c20",
+                        "on-surface-variant": "#43474e",
+                        "outline": "#73777f",
+                        "outline-variant": "#c3c6cf",
+                        "inverse-surface": "#2d3135",
+                        "inverse-on-surface": "#eef1f6",
+                        "primary": "#003366",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#2062b1",
+                        "on-primary-container": "#ffffff",
+                        "primary-fixed": "#d5e3ff",
+                        "on-primary-fixed": "#001c3b",
+                        "primary-fixed-dim": "#a5c8ff",
+                        "on-primary-fixed-variant": "#004787",
+                        "secondary": "#545f70",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#dae3f8",
+                        "on-secondary-container": "#3f495a",
+                        "secondary-fixed": "#dae3f8",
+                        "on-secondary-fixed": "#111c2b",
+                        "secondary-fixed-dim": "#bec6dc",
+                        "on-secondary-fixed-variant": "#3c4758",
+                        "tertiary": "#6e5676",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#f8d8ff",
+                        "on-tertiary-container": "#553f5e",
+                        "tertiary-fixed": "#f8d8ff",
+                        "on-tertiary-fixed": "#271430",
+                        "tertiary-fixed-dim": "#dbbce2",
+                        "on-tertiary-fixed-variant": "#553f5e",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "background": "#f6fafe",
+                        "on-background": "#181c20",
+                        "surface-tint": "#005ea5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "1rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "container-max": "1280px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+                    },
+                    "boxShadow": {
+                        'soft': '0 4px 20px -2px rgba(0, 51, 102, 0.08)',
+                        'hover': '0 12px 30px -4px rgba(0, 51, 102, 0.12)',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 51, 102, 0.4); }
+            70% { transform: scale(1.05); opacity: 0.9; box-shadow: 0 0 0 10px rgba(0, 51, 102, 0); }
+            100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(0, 51, 102, 0); }
+        }
+        .ai-processing {
+            background: linear-gradient(90deg, rgba(213,227,255,0.2) 0%, rgba(213,227,255,0.5) 50%, rgba(213,227,255,0.2) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .mesh-bg {
+            background-color: #f6fafe;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(210,100%,94%,1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, hsla(210,50%,96%,1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, hsla(210,100%,94%,1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(210,50%,96%,1) 0px, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/90 backdrop-blur-md border-b border-outline-variant transition-all duration-300">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-container-max mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                PCMC Grievance Portal
+            </div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Track</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Public Stats</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md">
+<span class="material-symbols-outlined text-[20px]">language</span>
+                    Language
+                </button>
+<button class="px-4 py-2 border border-primary text-primary rounded-lg font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors">
+                    Officer Login
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-16">
+<!-- Hero & Input Section -->
+<section class="relative mesh-bg py-20 md:py-32 overflow-hidden">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto relative z-10 text-center">
+<h1 class="font-display-lg text-display-lg text-primary mb-6 drop-shadow-sm">
+                    Your Voice Matters.<br/>Let’s Build a Better PCMC Together.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-16 max-w-2xl mx-auto">
+                    File complaints in your own language. We'll route them to the right department automatically.
+                </p>
+<!-- Grievance Input Card -->
+<div class="max-w-3xl mx-auto glass-card rounded-2xl shadow-soft hover:shadow-hover transition-shadow duration-500 p-8 md:p-10 text-left relative z-20">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-3 font-semibold" for="grievance-input">Describe your grievance in any language</label>
+<div class="relative mb-6">
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl p-5 font-body-md text-on-surface placeholder:text-outline focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all resize-none shadow-inner" id="grievance-input" placeholder="e.g., 'The streetlight near Akurdi station is not working since Tuesday'" rows="5"></textarea>
+<div class="absolute bottom-5 right-5 flex gap-3">
+<button aria-label="Upload Document" class="p-3 rounded-full bg-surface-container-highest text-primary hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined">upload_file</span>
+</button>
+<button aria-label="Voice Input" class="p-3 rounded-full bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-md pulse-animation">
+<span class="material-symbols-outlined">mic</span>
+</button>
+</div>
+</div>
+<!-- Real-time Analysis Card (Preview) -->
+<div class="ai-processing rounded-xl p-5 mb-8 border border-primary-fixed-dim flex flex-col md:flex-row gap-5 items-start md:items-center relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-xl"></div>
+<div class="flex items-center gap-3 text-primary font-label-md text-label-md">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">category</span>
+</div>
+<span>Detected Category: <strong class="font-bold">Roads</strong></span>
+</div>
+<div class="flex items-center gap-3 text-error font-label-md text-label-md">
+<div class="w-8 h-8 rounded-full bg-error-container text-on-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">priority_high</span>
+</div>
+<span>Urgency: <strong class="font-bold">High</strong></span>
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm md:ml-auto italic">
+                            Rationale: Mention of 'pothole' and 'main road'
+                        </div>
+</div>
+<button class="w-full py-4 bg-primary text-on-primary rounded-xl font-headline-md text-headline-md hover:bg-primary-container hover:text-on-primary-container hover:-translate-y-0.5 transition-all shadow-md hover:shadow-lg">
+                        Submit Grievance
+                    </button>
+</div>
+</div>
+<!-- Abstract background elements for depth -->
+<div class="absolute top-20 left-10 w-64 h-64 bg-primary-fixed-dim/30 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-10 right-10 w-96 h-96 bg-tertiary-fixed-dim/20 rounded-full blur-3xl pointer-events-none"></div>
+</section>
+<!-- How It Works Section -->
+<section class="py-20 md:py-32 bg-surface">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<h2 class="text-center font-headline-lg text-headline-lg text-primary mb-16 font-bold">How It Works</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/50 text-center shadow-soft hover:shadow-hover hover:-translate-y-2 transition-all duration-300 group">
+<div class="w-20 h-20 mx-auto bg-primary-fixed rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm">
+<span class="material-symbols-outlined text-[40px]">record_voice_over</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 font-bold">1. Speak or Type</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Enter your issue in any language. Our system understands you natively.
+                        </p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/50 text-center shadow-soft hover:shadow-hover hover:-translate-y-2 transition-all duration-300 group">
+<div class="w-20 h-20 mx-auto bg-primary-fixed rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-sm">
+<span class="material-symbols-outlined text-[40px]">alt_route</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 font-bold">2. We Route</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Our AI identifies the department instantly (Water, Roads, etc.) and routes it.
+                        </p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-10 rounded-2xl border border-outline-variant/50 text-center shadow-soft hover:shadow-hover hover:-translate-y-2 transition-all duration-300 group">
+<div class="w-20 h-20 mx-auto bg-primary-fixed rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-sm">
+<span class="material-symbols-outlined text-[40px]">check_circle</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 font-bold">3. Resolution</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            Track progress and provide feedback once your grievance is resolved.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-surface-container-high w-full py-12 mt-auto border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col gap-5">
+<div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined">account_balance</span>
+                    PCMC Grievance Portal
+                </div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                    © 2024 Pimpri-Chinchwad Municipal Corporation.<br/>All rights reserved.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-md text-label-md font-bold text-primary uppercase tracking-wider mb-2">Quick Links</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Contact Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Municipal Services</a>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-label-md text-label-md font-bold text-primary uppercase tracking-wider mb-2">Legal</h4>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Accessibility Statement</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+</body></html>
