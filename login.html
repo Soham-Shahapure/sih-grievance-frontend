@@ -6,12 +6,11 @@
     <title>Login - PCMC Digital Portal</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<!-- Updated background URL to correctly point to the js/ folder -->
-<body class="min-h-screen flex items-center justify-center p-4 relative font-sans" 
-      style="background-image: url('js/pcmc-bg.jpg'); background-size: cover; background-position: center;">
+<body class="min-h-screen flex items-center justify-center p-4 relative font-sans bg-slate-900" 
+      style="background-image: url('js/pcmc-bg.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
     
-    <!-- Dark blue overlay -->
-    <div class="absolute inset-0 bg-[#0f4a73]/80 backdrop-blur-sm"></div>
+    <!-- Dark blue overlay to make the card pop clearly -->
+    <div class="absolute inset-0 bg-[#0f4a73]/70 backdrop-blur-sm"></div>
 
     <main class="relative bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden flex flex-col z-10">
         
@@ -34,12 +33,9 @@
         <!-- Form Section -->
         <div class="px-8 py-6">
             
-            <!-- ========================================== -->
-            <!-- CITIZEN LOGIN FORM (Mobile + Password)     -->
-            <!-- ========================================== -->
+            <!-- Citizen Form -->
             <div id="citizenFormContainer" class="block">
                 <form id="citizenForm" class="space-y-4">
-                    
                     <div>
                         <label class="block text-xs font-bold text-slate-700 mb-1">Mobile Number</label>
                         <div class="flex border border-slate-300 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 shadow-sm transition-all">
@@ -55,23 +51,21 @@
                             <a href="#" class="text-xs text-blue-600 hover:underline font-medium">Forgot Password?</a>
                         </div>
                     </div>
+
+                    <div id="citizenError" class="hidden text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200"></div>
                     
-                    <button type="submit" class="w-full bg-[#0f4a73] hover:bg-blue-900 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors flex justify-center items-center gap-2 shadow-md mt-2">
+                    <button type="submit" id="citizenSubmitBtn" class="w-full bg-[#0f4a73] hover:bg-blue-900 text-white font-bold py-3 px-4 rounded-lg text-sm transition-colors flex justify-center items-center gap-2 shadow-md mt-2">
                         Login <span>→</span>
                     </button>
                 </form>
 
-                <!-- Sign Up Link -->
                 <div class="text-center mt-6 mb-2">
                     <p class="text-sm text-slate-600">Don't have an account? <a href="signup.html" class="text-blue-700 font-bold hover:underline">Sign up</a></p>
                 </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- OFFICER LOGIN FORM (ID + Password)         -->
-            <!-- ========================================== -->
+            <!-- Officer Form -->
             <div id="officerFormContainer" class="hidden">
-                
                 <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-5 flex items-start gap-3">
                     <svg class="w-5 h-5 text-blue-700 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
                     <p class="text-xs text-blue-800 font-medium leading-relaxed">Authorized personnel only. All access is logged and monitored by the PCMC IT Department.</p>
@@ -97,9 +91,7 @@
         </div>
     </main>
 
-    <!-- Import our API manager -->
     <script src="js/api.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const tabCitizen = document.getElementById("tabCitizen");
@@ -127,41 +119,15 @@
                 citizenFormContainer.classList.add("hidden");
             });
 
-            // CITIZEN LOGIN SUBMISSION
             citizenForm.addEventListener("submit", async (e) => {
                 e.preventDefault();
-                
-                const submitBtn = document.getElementById("citizenSubmitBtn");
-                const errorBox = document.getElementById("citizenError");
-                
-                submitBtn.innerHTML = `Authenticating...`;
-                submitBtn.disabled = true;
-                submitBtn.classList.add("opacity-75", "cursor-not-allowed");
-                errorBox.classList.add("hidden");
-
-                const identifierValue = document.getElementById("citizenId").value;
-
-                // 🔴 PLACEHOLDER: Change these keys to match what the backend expects
-                const payload = {
-                    identifier: identifierValue,
-                    password: document.getElementById("citizenPassword").value
-                };
-
-                try {
-                    await loginUser(payload);
-
-                    // MVP HACK: Save the mobile/email they typed to localStorage as their ID
-                    localStorage.setItem('citizen_id', identifierValue); 
-                    
-                    window.location.href = "index.html";
-                } catch (error) {
-                    errorBox.innerText = error.message;
-                    errorBox.classList.remove("hidden");
-                    
-                    submitBtn.innerHTML = `<span>Login</span> <span>→</span>`;
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove("opacity-75", "cursor-not-allowed");
+                const mobileInput = document.getElementById("citizenMobile").value;
+                if(mobileInput.length < 10) {
+                    alert("Please enter a valid 10-digit mobile number.");
+                    return;
                 }
+                localStorage.setItem('citizen_id', mobileInput);
+                window.location.href = "index.html";
             });
 
             officerForm.addEventListener("submit", (e) => {
@@ -169,200 +135,6 @@
                 window.location.href = "admin.html"; 
             });
         });
-    </script>
-</body>
-</html>
-4.index.html
-Overwrite your index.html file with this. I added <script src="js/api.js"></script> to the bottom and updated handleSubmit to check for the user's ID before allowing them to submit a grievance.
-
-HTML
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>PCMC Grievance Portal</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      .fade-in {
-        animation: fadeIn 0.4s ease-in-out forwards;
-      }
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-5px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-    </style>
-  </head>
-  <body class="bg-white text-gray-800 font-sans antialiased min-h-screen flex flex-col">
-    <!-- Navbar -->
-    <header class="w-full border-b border-gray-100 bg-white sticky top-0 z-50">
-      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-          <div class="flex items-center gap-2">
-            <svg class="w-6 h-6 text-blue-900" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-            </svg>
-            <span class="font-bold text-lg text-blue-950 tracking-tight">PCMC Grievance Portal</span>
-          </div>
-          <nav class="hidden md:flex gap-8">
-            <a href="index.html" class="text-sm font-semibold text-blue-950 border-b-2 border-blue-950 pb-1">Home</a>
-            <a href="track-status.html" class="text-sm font-medium text-gray-500 hover:text-blue-950 transition-colors">Track</a>
-            <a href="public-stats.html" class="text-sm font-medium text-gray-500 hover:text-blue-950 transition-colors">Public Stats</a>
-          </nav>
-          <div class="flex items-center gap-4">
-            <button class="flex items-center gap-1 text-sm font-medium text-gray-600 hover:text-blue-950 transition-colors">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-              </svg>
-              Language
-            </button>
-            <a href="login.html" id="navLoginBtn" class="text-sm font-medium text-blue-900 bg-blue-50 px-4 py-2 rounded-md hover:bg-blue-100 transition-colors border border-blue-100">Login</a>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Hero Section -->
-    <main class="flex-grow bg-gradient-to-b from-blue-50/50 to-white pt-16 pb-20">
-      <div class="max-w-4xl mx-auto px-4 text-center">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-blue-950 mb-4 tracking-tight leading-tight">
-          Your Voice Matters.<br />Let's Build a Better PCMC Together.
-        </h1>
-        <p class="text-gray-600 mb-10 text-lg max-w-2xl mx-auto">
-          File complaints in your own language. We'll route them to the right department automatically.
-        </p>
-
-        <!-- Grievance Input Card -->
-        <div class="bg-white rounded-2xl shadow-xl shadow-blue-900/5 border border-gray-100 p-6 md:p-8 max-w-3xl mx-auto text-left">
-          <form id="grievanceForm" onsubmit="handleSubmit(event)">
-            <label class="block text-sm font-medium text-gray-700 mb-2">Describe your grievance in any language</label>
-            <div class="relative mb-4">
-              <textarea id="complaintInput" rows="4" placeholder="e.g., 'The streetlight near Akurdi station is not working since Tuesday'" class="w-full border border-gray-200 rounded-xl py-3 px-4 focus:ring-2 focus:ring-blue-950 focus:border-blue-950 outline-none resize-none transition-shadow text-gray-800"></textarea>
-              <div class="absolute bottom-3 right-3 flex gap-2">
-                <button type="button" class="p-2 text-gray-400 hover:text-blue-900 bg-gray-50 hover:bg-blue-50 rounded-lg transition-colors">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"></path>
-                  </svg>
-                </button>
-                <button type="button" class="p-2 text-white bg-blue-950 hover:bg-blue-800 rounded-lg transition-colors shadow-sm cursor-not-allowed opacity-90" title="Audio disabled for MVP">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z"></path>
-                  </svg>
-                </button>
-              </div>
-            </div>
-
-            <div id="aiBox" class="hidden flex-col md:flex-row gap-4 items-center bg-[#f8fafc] border border-blue-100 rounded-xl p-4 mb-6">
-              <div class="flex items-center gap-2 bg-blue-50 text-blue-800 px-3 py-1.5 rounded-md text-sm font-medium">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                </svg>
-                Detected Category: <span class="font-bold">Roads</span>
-              </div>
-              <div class="flex items-center gap-2 bg-red-50 text-red-700 px-3 py-1.5 rounded-md text-sm font-medium">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
-                </svg>
-                Urgency: <span class="font-bold">High</span>
-              </div>
-              <div class="text-xs text-gray-500 italic flex-1 text-right">
-                Rationale: Mention of 'pothole' and 'main road'
-              </div>
-            </div>
-
-            <button type="submit" id="submitBtn" class="w-full bg-blue-950 hover:bg-blue-900 text-white font-medium py-3.5 px-4 rounded-xl transition-all shadow-md hover:shadow-lg flex justify-center items-center">
-              <span id="btnText">Submit Grievance</span>
-              <svg id="btnLoader" class="animate-spin ml-2 h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-              </svg>
-            </button>
-          </form>
-        </div>
-      </div>
-
-      <!-- How It Works Section omitted for brevity, keep yours as is! -->
-
-    </main>
-
-    <!-- Import our API manager -->
-    <script src="js/api.js"></script>
-    
-    <script>
-      const textarea = document.getElementById("complaintInput");
-      const aiBox = document.getElementById("aiBox");
-
-      // Check login status on page load to update navbar
-      document.addEventListener("DOMContentLoaded", () => {
-          const citizenId = localStorage.getItem('citizen_id');
-          if (citizenId) {
-              const navBtn = document.getElementById("navLoginBtn");
-              navBtn.innerText = "Logout";
-              navBtn.href = "#";
-              navBtn.onclick = () => {
-                  localStorage.removeItem('citizen_id');
-                  window.location.reload();
-              };
-          }
-      });
-
-      textarea.addEventListener("input", function () {
-        if (this.value.length > 20) {
-          if (aiBox.classList.contains("hidden")) {
-            aiBox.classList.remove("hidden");
-            aiBox.classList.add("flex", "fade-in");
-          }
-        } else {
-          aiBox.classList.add("hidden");
-          aiBox.classList.remove("flex", "fade-in");
-        }
-      });
-
-      async function handleSubmit(e) {
-        e.preventDefault();
-        if (textarea.value.trim().length === 0) return;
-
-        // 1. Verify Authentication
-        const citizenId = localStorage.getItem('citizen_id');
-        if (!citizenId) {
-            alert("Please log in to submit a grievance.");
-            window.location.href = "login.html";
-            return;
-        }
-
-        const btn = document.getElementById("submitBtn");
-        const btnText = document.getElementById("btnText");
-        const btnLoader = document.getElementById("btnLoader");
-
-        btn.disabled = true;
-        btn.classList.add("opacity-75", "cursor-not-allowed");
-        btnText.innerText = "Routing...";
-        btnLoader.classList.remove("hidden");
-
-        // 2. Prepare Payload
-        const payload = {
-            userId: citizenId,
-            description: textarea.value
-        };
-
-        try {
-            // 3. Send to Backend
-            // Uncomment the line below when your backend endpoint is ready!
-            // await submitGrievance(payload);
-
-            // Simulate the delay for visual effect
-            setTimeout(() => {
-              window.location.href = "track-status.html"; 
-            }, 1500);
-
-        } catch (error) {
-            alert("Failed to submit: " + error.message);
-            btn.disabled = false;
-            btn.classList.remove("opacity-75", "cursor-not-allowed");
-            btnText.innerText = "Submit Grievance";
-            btnLoader.classList.add("hidden");
-        }
-      }
     </script>
 </body>
 </html>
